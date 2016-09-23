@@ -18,14 +18,14 @@ default: computepi.o
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@ 
 
-run_time_test: $(EXECUTABLE)
+check: default
 	time ./time_test_baseline
 	time ./time_test_openmp_2
 	time ./time_test_openmp_4
 	time ./time_test_avx
 	time ./time_test_avxunroll
 
-run_clock_gettime: $(EXECUTABLE)
+gencsv: default
 	for i in `seq 100 5000 25000`; do \
 		printf "%d," $$i;\
 		./benchmark_clock_gettime $$i; \
