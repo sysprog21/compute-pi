@@ -1,5 +1,7 @@
 # 採用離散積分的方法求圓周率，並著手透過 SIMD 指令作效能最佳化
 
+Authored by Lee Chao Yuan <charles620016@gmail.com>
+
 ![](https://raw.githubusercontent.com/charles620016/embedded-fall2015/master/hw1-computePi/screenshot/integral.png)
 
 相關連結：[開發紀錄與效能分析](https://charles620016.hackpad.com/Charles-Week-1-kBMD0GhbC7d)
