@@ -12,3 +12,4 @@ time_test_baseline
 time_test_openmp_2
 time_test_openmp_4
 result_clock_gettime.csv
+runtime.png
