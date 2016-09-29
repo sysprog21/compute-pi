@@ -66,4 +66,4 @@ plot: gencsv
 	gnuplot scripts/runtime.gp
 
 clean:
-	rm -f $(EXECUTABLE) *.o *.s result_clock_gettime.csv runtime.png
+	rm -f $(EXECUTABLE) *.o *.s *.png result_clock_gettime.csv

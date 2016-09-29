@@ -11,8 +11,6 @@ time_test_avxunroll
 time_test_baseline
 time_test_openmp_2
 time_test_openmp_4
-result_clock_gettime.csv
-runtime.png
 time_test_leibniz
 time_test_leibniz_avx
 time_test_leibniz_avxunroll
@@ -23,3 +21,6 @@ time_test_euler_avx
 time_test_euler_avxunroll
 time_test_euler_openmp_2
 time_test_euler_openmp_4
+result_clock_gettime.csv
+runtime.png
+error.png
