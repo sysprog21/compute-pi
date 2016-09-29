@@ -5,7 +5,10 @@
 *.list
 *.swp
 *.bak
+*.csv
+*.png
 benchmark_clock_gettime
+methods_error_rate
 time_test_avx
 time_test_avxunroll
 time_test_baseline
@@ -21,6 +24,3 @@ time_test_euler_avx
 time_test_euler_avxunroll
 time_test_euler_openmp_2
 time_test_euler_openmp_4
-result_clock_gettime.csv
-runtime.png
-error.png
