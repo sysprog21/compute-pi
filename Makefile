@@ -58,7 +58,7 @@ check: default
 	time ./time_test_euler_avxunroll
 
 gencsv: default
-	for i in `seq 1000 5000 1000000`; do \
+	for i in `seq 1008 4000 1000000`; do \
 		printf "%d " $$i;\
 		./benchmark_clock_gettime $$i; \
 	done > result_clock_gettime.csv
@@ -67,7 +67,7 @@ plot: gencsv
 	gnuplot scripts/runtime.gp
 
 gencsv-methods: default
-	for i in `seq 1000 5000 1000000`; do \
+	for i in `seq 1008 4000 1000000`; do \
 		printf "%d " $$i;\
 		./methods_error_rate $$i; \
 	done > methods_error_rate.csv
