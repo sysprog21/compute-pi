@@ -7,7 +7,7 @@ EXECUTABLE = \
 	time_test_leibniz_avx time_test_leibniz_avxunroll \
 	time_test_euler time_test_euler_openmp_2 time_test_euler_openmp_4 \
 	time_test_euler_avx time_test_euler_avxunroll \
-	benchmark_clock_gettime compare_error_rate
+	benchmark_clock_gettime methods_error_rate
 
 GIT_HOOKS := .git/hooks/pre-commit
 METHOD ?= BASELINE
