@@ -5,7 +5,13 @@ EXECUTABLE = \
 	time_test_avx time_test_avxunroll \
 	benchmark_clock_gettime
 
-default: computepi.o
+GIT_HOOKS := .git/hooks/pre-commit
+
+$(GIT_HOOKS):
+	@scripts/install-git-hooks
+	@echo
+
+default: $(GIT_HOOKS) computepi.o
 	$(CC) $(CFLAGS) computepi.o time_test.c -DBASELINE -o time_test_baseline
 	$(CC) $(CFLAGS) computepi.o time_test.c -DOPENMP_2 -o time_test_openmp_2
 	$(CC) $(CFLAGS) computepi.o time_test.c -DOPENMP_4 -o time_test_openmp_4
