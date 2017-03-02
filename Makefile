@@ -16,26 +16,21 @@ $(GIT_HOOKS):
 	@scripts/install-git-hooks
 	@echo
 
-default: $(GIT_HOOKS) computepi.o
-	$(CC) $(CFLAGS) computepi.o time_test.c -DBASELINE -o time_test_baseline -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DOPENMP_2 -o time_test_openmp_2 -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DOPENMP_4 -o time_test_openmp_4 -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DAVX -o time_test_avx -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DAVXUNROLL -o time_test_avxunroll -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DLEIBNIZ -o time_test_leibniz -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DLEIBNIZ_OPENMP_2 -o time_test_leibniz_openmp_2 -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DLEIBNIZ_OPENMP_4 -o time_test_leibniz_openmp_4 -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DLEIBNIZ_AVX -o time_test_leibniz_avx -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DLEIBNIZ_AVXUNROLL -o time_test_leibniz_avxunroll -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DEULER -o time_test_euler -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DEULER_OPENMP_2 -o time_test_euler_openmp_2 -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DEULER_OPENMP_4 -o time_test_euler_openmp_4 -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DEULER_AVX -o time_test_euler_avx -lm
-	$(CC) $(CFLAGS) computepi.o time_test.c -DEULER_AVXUNROLL -o time_test_euler_avxunroll -lm
-	$(CC) $(CFLAGS) computepi.o benchmark_clock_gettime.c -D$(METHOD) -o benchmark_clock_gettime -lm
-	$(CC) $(CFLAGS) computepi.o methods_error_rate.c -o methods_error_rate -lm
+default: $(GIT_HOOKS) $(EXECUTABLE)
+
+benchmark_clock_gettime: computepi.o benchmark_clock_gettime.c
+	$(CC) $(CFLAGS) $? -D$(METHOD) -o $@ -lm
+
+methods_error_rate: computepi.o methods_error_rate.c
+	$(CC) $(CFLAGS) $? -o $@ -lm
+
+time_test_%: computepi.o %_method.o
+	$(CC) $(CFLAGS) $? -o $@ -lm
 
 .PHONY: clean default
+
+%_method.o: time_test.c
+	$(CC) -c $(CFLAGS) $< -D$(shell echo $(subst _method.o,,$@) | tr a-z A-Z) -o $@
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
