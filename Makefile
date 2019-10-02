@@ -9,7 +9,8 @@ EXECUTABLE = \
 	time_test_euler_avx time_test_euler_avxunroll \
 	benchmark_clock_gettime methods_error_rate
 
-GIT_HOOKS := .git/hooks/pre-commit
+GIT_HOOKS := .git/hooks/applied
+
 METHOD ?= BASELINE
 
 $(GIT_HOOKS):

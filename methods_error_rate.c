@@ -1,7 +1,7 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <math.h>
 #include "computepi.h"
 
 #define CLOCK_ID CLOCK_MONOTONIC_RAW
@@ -11,7 +11,8 @@
 
 int main(int argc, char const *argv[])
 {
-    if (argc < 2) return -1;
+    if (argc < 2)
+        return -1;
 
     int N = atoi(argv[1]);
 
